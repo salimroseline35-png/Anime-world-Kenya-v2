@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Anime World Kenya 🇰🇪</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
+body{background:#0f0f1a;color:white;padding:15px}
+header{text-align:center;padding:20px 0}
+header h1{font-size:30px;background:linear-gradient(90deg,#ff2e63,#ff9f00,#00e5ff);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+header p{color:#ccc;margin-top:5px}
+.search-box{display:flex;gap:10px;max-width:600px;margin:15px auto}
+.search-box input{flex:1;padding:12px;border-radius:25px;border:none;outline:none}
+.search-box button{padding:12px 20px;border:none;border-radius:25px;background:#ff2e63;color:white;font-weight:bold}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:18px;max-width:1100px;margin:auto}
+.card{background:#1a1a2e;border-radius:15px;overflow:hidden;padding-bottom:12px}
+.card iframe{width:100%;height:190px;border:none}
+.card-body{padding:10px 12px}
+.card-body h3{font-size:18px}
+.card-body p{font-size:13px;color:#aaa;margin:6px 0;line-height:1.4}
+.badge{display:inline-block;background:#ff2e63;color:white;padding:4px 10px;border-radius:15px;font-size:12px;font-weight:bold;margin-right:5px}
+.badge2{background:#00e5ff;color:#000}
+.btn{display:block;margin:10px 12px 0;padding:10px;text-align:center;background:#ff9f00;color:#000;border-radius:20px;font-weight:bold;text-decoration:none}
+.whatsapp{position:fixed;bottom:20px;right:20px;background:#25D366;color:white;padding:14px 18px;border-radius:30px;text-decoration:none;font-weight:bold;z-index:10}
+</style>
+</head>
+<body>
+<header>
+<h1>ANIME WORLD KENYA 🇰🇪</h1>
+<p>Top 10 Posts • Watch Trailers • No Delay!</p>
+</header>
+<div class="search-box">
+<input id="search" placeholder="Search anime..." oninput="render()">
+<button onclick="render()">Search</button>
+</div>
+<div class="grid" id="grid"></div>
+<a class="whatsapp" href="https://wa.me/254700000000?text=Hi Anime World Kenya!" target="_blank">💬 Join WhatsApp</a>
+<script>
+const posts=[
+{t:"1. Naruto - The Legend Begins",d:"Naruto Uzumaki dreams of becoming Hokage. Action, ninja, never give up!",g:"Action",r:"8.3",video:"https://www.youtube.com/embed/tA3yE4_t6SY"},
+{t:"2. One Piece - King of Pirates",d:"Luffy and his crew sail for the One Piece treasure. Best adventure ever!",g:"Adventure",r:"9.0",video:"https://www.youtube.com/embed/S8_YwFLCh4U"},
+{t:"3. Demon Slayer - Tanjiro's Fight",d:"Tanjiro fights demons to save his sister Nezuko. Beautiful fights!",g:"Action",r:"8.7",video:"https://www.youtube.com/embed/VQGCKyvzIM4"},
+{t:"4. Jujutsu Kaisen - Cursed Energy",d:"Yuji eats a cursed finger and joins Jujutsu High. Dark and powerful!",g:"Action",r:"8.6",video:"https://www.youtube.com/embed/UPRqnF1D5rQ"},
+{t:"5. Attack on Titan - Final Battle",d:"Eren fights Titans to save humanity. Most shocking anime ever!",g:"Action",r:"9.0",video:"https://www.youtube.com/embed/MGRm4IzK1SQ"},
+{t:"6. Solo Leveling - Weak to Strongest",d:"Sung Jinwoo goes from weakest hunter to Shadow Monarch!",g:"Fantasy",r:"8.4",video:"https://www.youtube.com/embed/YvGSK8mI5x0"},
+{t:"7. Death Note - Genius vs Genius",d:"Light finds a notebook that kills. L tries to catch him. Mind games!",g:"Thriller",r:"8.6",video:"https://www.youtube.com/embed/NlJZ-YgAt-c"},
+{t:"8. Dragon Ball Z - Goku vs Vegeta",d:"Goku protects Earth with Super Saiyan power. Classic for Kenya!",g:"Action",r:"8.7",video:"https://www.youtube.com/embed/sxuf5yA3QvE"},
+{t:"9. My Hero Academia - Go Beyond!",d:"Deku has no power, then gets One For All. Plus Ultra!",g:"Action",r:"8.0",video:"https://www.youtube.com/embed/D5fGq9LzotQ"},
+{t:"10. Frieren - After The Hero",d:"Elf mage Frieren learns what it means to be human. Beautiful & emotional.",g:"Fantasy",r:"9.0",video:"https://www.youtube.com/embed/Iwr1aLEDpe4"}
+];
+function render(){
+let q=document.getElementById('search').value.toLowerCase();
+let list=posts.filter(p=>p.t.toLowerCase().includes(q));
+document.getElementById('grid').innerHTML=list.map(p=>`
+<div class="card">
+<iframe src="${p.video}" allowfullscreen></iframe>
+<div class="card-body">
+<h3>${p.t}</h3>
+<p>${p.d}</p>
+<span class="badge">⭐ ${p.r}</span><span class="badge badge2">${p.g}</span>
+</div>
+<a class="btn" href="${p.video.replace('/embed/','/watch?v=')}" target="_blank">▶ Watch on YouTube</a>
+</div>`).join('');
+}
+render();
+</script>
+</body>
+</html>
